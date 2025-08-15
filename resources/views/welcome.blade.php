@@ -21,21 +21,16 @@
 
         <div class="flex justify-center gap-4">
             @auth
-            <a href="{{ url('/admin') }}"
+            <a href="/admin"
                 class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow">
                 Masuk ke Dashboard
             </a>
             @else
-            <a href="{{ route('login') }}"
+            <a href="/admin"
                 class="px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow">
                 Log in
             </a>
-            @if (Route::has('register'))
-            <a href="{{ route('register') }}"
-                class="px-6 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg shadow">
-                Register
-            </a>
-            @endif
+
             @endauth
         </div>
     </div>
