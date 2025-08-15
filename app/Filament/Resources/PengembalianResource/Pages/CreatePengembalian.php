@@ -9,4 +9,8 @@ use Filament\Resources\Pages\CreateRecord;
 class CreatePengembalian extends CreateRecord
 {
     protected static string $resource = PengembalianResource::class;
+    public function getTitle(): string
+    {
+        return 'Pengembalian Barang';
+    }
 }

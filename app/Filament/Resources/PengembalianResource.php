@@ -52,33 +52,6 @@ class PengembalianResource extends Resource
             ]);
     }
 
-    public static function table(Table $table): Table
-    {
-        return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('peminjam.nama_peminjam')
-                    ->label('Nama Peminjam')
-                    ->sortable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('peminjam.barang.nama')
-                    ->label('Barang')
-                    ->sortable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('kondisi')
-                    ->sortable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('tanggal_dibuat')
-                    ->dateTime()
-                    ->sortable(),
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
-            ]);
-    }
 
     public static function getPages(): array
     {

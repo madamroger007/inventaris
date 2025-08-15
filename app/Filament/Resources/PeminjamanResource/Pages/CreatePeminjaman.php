@@ -9,4 +9,8 @@ use Filament\Resources\Pages\CreateRecord;
 class CreatePeminjaman extends CreateRecord
 {
     protected static string $resource = PeminjamanResource::class;
+      public function getTitle(): string
+    {
+        return 'Peminjaman Barang';
+    }
 }

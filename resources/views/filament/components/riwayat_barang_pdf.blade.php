@@ -86,7 +86,7 @@
             <p>Majalaya, {{ \Carbon\Carbon::now()->translatedFormat('d F Y') }}</p>
             <br><br><br> <!-- Spasi untuk tanda tangan -->
             <p><strong>______________________</strong></p>
-            <p>Kepala Logistik</p>
+            <p>Admin Inventaris</p>
         </div>
     </div>
 </body>

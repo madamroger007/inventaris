@@ -32,7 +32,11 @@ class ListRiwayatBarangs extends ListRecords
                     $records = $records->map(function ($item) {
                         $item->peminjaman->nama_peminjam = mb_convert_encoding($item->peminjaman->nama_peminjam ?? '', 'UTF-8', 'UTF-8');
                         $item->peminjaman->barang->nama = mb_convert_encoding($item->peminjaman->barang->nama ?? '', 'UTF-8', 'UTF-8');
-                        $item->pengembalian->kondisi = mb_convert_encoding($item->pengembalian->kondisi ?? '', 'UTF-8', 'UTF-8');
+
+                        if ($item->pengembalian) { // pastikan relasi ada
+                            $item->pengembalian->kondisi = mb_convert_encoding($item->pengembalian->kondisi ?? '', 'UTF-8', 'UTF-8');
+                        }
+
                         return $item;
                     });
 
