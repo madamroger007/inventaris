@@ -13,15 +13,23 @@ class Barang extends Model
     const UPDATED_AT = 'tanggal_diperbarui';
     protected $fillable = [
         'nama',
+        'kode_barang',
         'kategori',
         'jumlah',
         'kondisi',
         'gambar',
+        'id_denah' // Menambahkan field id_denah ke fillable
     ];
 
     // Relasi: Barang bisa dipinjam banyak kali
     public function peminjaman()
     {
         return $this->hasMany(Peminjaman::class, 'id_barang');
+    }
+
+    // Relasi: Barang milik satu DenahPenyimpanan
+    public function denahPenyimpanan()
+    {
+        return $this->belongsTo(DenahPenyimpanan::class, 'id_denah');
     }
 }

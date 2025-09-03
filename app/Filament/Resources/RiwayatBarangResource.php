@@ -43,6 +43,10 @@ class RiwayatBarangResource extends Resource
                     ->label('Barang')
                     ->sortable()
                     ->searchable(), // sequential search
+                TextColumn::make('peminjaman.jumlah')
+                    ->label('Jumlah')
+                    ->sortable()
+                    ->searchable(),
 
                 TextColumn::make('peminjaman.tanggal_dibuat')
                     ->label('Tanggal Pinjam')

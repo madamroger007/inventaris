@@ -9,7 +9,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-
+use Filament\Forms\Components\Select;
 class BarangResource extends Resource
 {
     protected static ?string $model = Barang::class;
@@ -27,7 +27,15 @@ class BarangResource extends Resource
                     ->label('Nama Barang')
                     ->required()
                     ->maxLength(100),
+            Forms\Components\TextInput::make('kode_barang')
+                ->label('Kode Barang')
+                ->required()
+                ->maxLength(50),
 
+            Select::make('id_denah')
+                ->label('Denah Penyimpanan')
+                ->relationship('denahPenyimpanan', 'label')
+                ->required(),
                 Forms\Components\TextInput::make('kategori')
                     ->label('Kategori Barang')
                     ->required()
@@ -59,8 +67,10 @@ class BarangResource extends Resource
             ->recordUrl(null)
             ->columns([
                 Tables\Columns\TextColumn::make('nama')->label('Nama Barang')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('kode_barang')->label('Kode Barang')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('kategori')->label('Kategori')->sortable(),
                 Tables\Columns\TextColumn::make('jumlah')->label('Jumlah')->sortable(),
+                Tables\Columns\TextColumn::make('denahPenyimpanan.label')->label('Denah Penyimpanan')->sortable(),
                 Tables\Columns\TextColumn::make('kondisi')->label('Kondisi'),
                 Tables\Columns\ViewColumn::make('gambar')
                     ->label('Foto')

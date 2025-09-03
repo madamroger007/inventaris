@@ -17,6 +17,7 @@ class Peminjaman extends Model
         'nama_peminjam',
         'nohp',
         'email',
+        'alamat',
         'jumlah',
         'tanggal_dibuat',
         'tanggal_diperbarui'
@@ -39,4 +40,6 @@ class Peminjaman extends Model
     {
         return $this->hasMany(RiwayatBarang::class, 'id_peminjam');
     }
+
+
 }
