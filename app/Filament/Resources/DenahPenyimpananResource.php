@@ -18,8 +18,8 @@ class DenahPenyimpananResource extends Resource
     protected static ?string $model = DenahPenyimpanan::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationLabel = 'Denah Penyimpanan';
-    protected static ?string $pluralLabel = 'Denah Penyimpanan';
+    protected static ?string $navigationLabel = 'Lokasi Penyimpanan';
+    protected static ?string $pluralLabel = 'Lokasi Penyimpanan';
     protected static ?string $navigationGroup = 'Inventaris';
     public static function form(Form $form): Form
     {

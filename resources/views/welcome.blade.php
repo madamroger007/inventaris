@@ -94,7 +94,7 @@
                 <p class="mt-4 text-lg text-blue-100">
                     Kelola penyimpanan dan peminjaman barang sekolah dengan lebih mudah dan cepat.
                 </p>
-                <a href=""
+                <a href="{{ route('peminjaman.index') }}"
                     class="mt-6 inline-block px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg shadow hover:bg-blue-50 transition">
                     Peminjaman Barang
                 </a>
@@ -145,11 +145,14 @@
         </div>
 
         <!-- Tombol WhatsApp Fixed -->
-        <a href="https://wa.me/6281234567890" target="_blank"
+        <!-- Tombol WhatsApp Fixed -->
+        <a href="https://wa.me/6285163185067?text=Halo%20saya%20mau%20bertanya%20tentang%20layanan%20Anda"
+            target="_blank"
             class="relative bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg
-          animate-bounce hover:scale-110 transition transform duration-300 ease-in-out">
+   animate-bounce hover:scale-110 transition transform duration-300 ease-in-out">
             <i class="fa-solid fa-robot w-6 h-6"></i>
         </a>
+
     </div>
 
 
@@ -163,7 +166,7 @@
                 message.classList.remove("hidden");
             }, 2000);
 
-  
+
         });
     </script>
 

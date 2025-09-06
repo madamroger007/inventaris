@@ -10,6 +10,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Components\Select;
+
 class BarangResource extends Resource
 {
     protected static ?string $model = Barang::class;
@@ -27,15 +28,16 @@ class BarangResource extends Resource
                     ->label('Nama Barang')
                     ->required()
                     ->maxLength(100),
-            Forms\Components\TextInput::make('kode_barang')
-                ->label('Kode Barang')
-                ->required()
-                ->maxLength(50),
+                Forms\Components\TextInput::make('kode_barang')
+                    ->label('Kode Barang')
+                    ->disabled() // agar tidak bisa diedit manual
+                    ->dehydrated(false) // tidak ikut di-submit, karena sudah diisi otomatis
+                    ->default('Otomatis Digenerate'),
 
-            Select::make('id_denah')
-                ->label('Denah Penyimpanan')
-                ->relationship('denahPenyimpanan', 'label')
-                ->required(),
+                Select::make('id_denah')
+                    ->label('Denah Penyimpanan')
+                    ->relationship('denahPenyimpanan', 'label')
+                    ->required(),
                 Forms\Components\TextInput::make('kategori')
                     ->label('Kategori Barang')
                     ->required()

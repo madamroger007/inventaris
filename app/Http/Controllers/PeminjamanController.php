@@ -17,7 +17,6 @@ class PeminjamanController extends Controller
 
     public function __construct(Barang $barang, Peminjaman $peminjaman)
     {
-        $this->middleware('auth');
         $this->barang = $barang;
         $this->peminjaman = $peminjaman;
     }
