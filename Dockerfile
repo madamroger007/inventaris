@@ -16,11 +16,21 @@ RUN sed -i 's|/var/www/html|/var/www/public|g' /etc/apache2/sites-available/000-
 # Set working dir
 WORKDIR /var/www
 
+# Copy composer files dulu biar caching lebih efisien
+COPY composer.json composer.lock ./
+
+# Install composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Install vendor (inside container)
+RUN composer install --no-dev --optimize-autoloader
+
 # Copy semua file ke container
-COPY . /var/www
+COPY . .
 
 # Set permissions storage & bootstrap
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
+    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
 # Tambah konfigurasi Laravel agar .htaccess bekerja
 RUN echo '<Directory /var/www/public>\n\
@@ -28,3 +38,5 @@ RUN echo '<Directory /var/www/public>\n\
     Require all granted\n\
 </Directory>' > /etc/apache2/conf-available/laravel.conf \
     && a2enconf laravel
+
+EXPOSE 80
