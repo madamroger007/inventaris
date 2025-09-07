@@ -12,6 +12,9 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\ViewField;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\TextInput;
 
 class DenahPenyimpananResource extends Resource
 {
@@ -25,12 +28,22 @@ class DenahPenyimpananResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('kode_denah')
-                    ->label('Kode Denah')
-                    ->required(),
-                Forms\Components\TextInput::make('label')
-                    ->label('Label')
-                    ->required(),
+                // Bagian gambar denah, full row
+                ViewField::make('denah_gambar')
+                    ->view('filament.components.denah-gambar')
+                    ->columnSpanFull(), // biar full width
+
+                // Bagian form input dengan 2 kolom
+                Grid::make(2)
+                    ->schema([
+                        TextInput::make('kode_denah')
+                            ->label('Kode Denah')
+                            ->required(),
+
+                        TextInput::make('label')
+                            ->label('Label')
+                            ->required(),
+                    ]),
             ]);
     }
 
