@@ -10,6 +10,11 @@ class EditDenahPenyimpanan extends EditRecord
 {
     protected static string $resource = DenahPenyimpananResource::class;
 
+    public function getTitle(): string
+    {
+        return 'Edit Lokasi Penyimpanan';
+    }
+
     protected function getHeaderActions(): array
     {
         return [
