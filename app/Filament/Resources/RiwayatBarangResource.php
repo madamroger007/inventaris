@@ -53,8 +53,8 @@ class RiwayatBarangResource extends Resource
                     ->dateTime()
                     ->sortable(),
 
-                TextColumn::make('kondisi')
-                    ->label('Kondisi Barang')
+                TextColumn::make('pengembalian.kondisi')
+                    ->label('Kondisi Pengembalian Barang')
                     ->sortable(),
 
                 TextColumn::make('pengembalian.tanggal_dibuat')

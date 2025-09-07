@@ -62,7 +62,7 @@
                 <th>Nama Peminjam</th>
                 <th>Barang</th>
                 <th>Tanggal Pinjam</th>
-                <th>Kondisi Barang</th>
+                <th>Kondisi Pengembalian Barang</th>
                 <th>Tanggal Kembali</th>
             </tr>
         </thead>

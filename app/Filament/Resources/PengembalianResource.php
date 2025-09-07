@@ -45,7 +45,7 @@ class PengembalianResource extends Resource
 
                     // Kondisi barang
                     TextInput::make('kondisi')
-                        ->label('Kondisi Barang')
+                        ->label('Kondisi Pengembalian Barang')
                         ->maxLength(50)
                         ->required(),
                 ]),
