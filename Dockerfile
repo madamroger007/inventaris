@@ -16,17 +16,22 @@ RUN sed -i 's|/var/www/html|/var/www/public|g' /etc/apache2/sites-available/000-
 # Set working dir
 WORKDIR /var/www
 
-# Copy composer files dulu biar caching lebih efisien
+# Copy composer files dulu (biar caching lebih efisien)
 COPY composer.json composer.lock ./
 
 # Install composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
-# Install vendor (inside container)
-RUN composer install --no-dev --optimize-autoloader
+# Install vendor (tanpa jalankan artisan scripts dulu)
+RUN composer install --no-dev --optimize-autoloader --no-scripts
 
-# Copy semua file ke container
+# Copy semua file project ke container
 COPY . .
+
+# Setelah file ada, jalankan artisan script (jika perlu)
+RUN composer dump-autoload --optimize \
+    && php artisan package:discover --ansi || true
 
 # Set permissions storage & bootstrap
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
