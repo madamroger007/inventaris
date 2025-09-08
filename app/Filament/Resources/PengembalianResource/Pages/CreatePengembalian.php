@@ -7,6 +7,7 @@ use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 use App\Models\Peminjaman;
 use App\Models\Barang;
+
 class CreatePengembalian extends CreateRecord
 {
     protected static string $resource = PengembalianResource::class;
@@ -25,9 +26,10 @@ class CreatePengembalian extends CreateRecord
         if ($peminjaman && $peminjaman->barang) {
             $barang = $peminjaman->barang;
 
-            // Tambahkan stok sesuai jumlah yang dipinjam
-            $barang->jumlah += $peminjaman->jumlah;
-            $barang->save();
+            if ($pengembalian->kondisi !== 'Hilang') {
+                $barang->jumlah += $peminjaman->jumlah;
+                $barang->save();
+            }
         }
     }
 }

@@ -17,7 +17,7 @@ class APIController extends Controller
 
     public function getBarang()
     {
-        $data_barang = $this->barang->all();
+        $data_barang = $this->barang->with('denah')->get();
         return response()->json($data_barang);
     }
 }

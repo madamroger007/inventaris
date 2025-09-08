@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DenahPenyimpanan extends Model
 {
-   
+
     protected $table = 'denah_penyimpanan';
     protected $primaryKey = 'id';
     public $timestamps = true; // Karena kita pakai tanggal_dibuat & tanggal_diperbarui manual
@@ -17,4 +17,9 @@ class DenahPenyimpanan extends Model
         'kode_denah',
         'label',
     ];
+
+    public function barang()
+    {
+        return $this->hasMany(Barang::class, 'id_denah', 'id');
+    }
 }

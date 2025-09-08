@@ -36,22 +36,36 @@ class BarangResource extends Resource
 
                 Select::make('id_denah')
                     ->label('Denah Penyimpanan')
-                    ->relationship('denahPenyimpanan', 'label')
+                    ->relationship('denah', 'label')
                     ->required(),
-                Forms\Components\TextInput::make('kategori')
+                Select::make('kategori')
                     ->label('Kategori Barang')
+                    ->options([
+                        'Perabot' => 'Perabot',
+                        'Administrasi' => 'Administrasi',
+                        'Laboratorium' => 'Laboratorium',
+                        'Buku' => 'Buku',
+                        'Olahraga' => 'Olahraga',
+                        'Seni' => 'Seni',
+                        'Multimedia' => 'Multimedia',
+                    ])
                     ->required()
-                    ->maxLength(50),
+                    ->native(false),
 
                 Forms\Components\TextInput::make('jumlah')
                     ->label('Jumlah')
                     ->numeric()
                     ->required(),
 
-                Forms\Components\TextInput::make('kondisi')
+                // Kondisi barang
+                Select::make('kondisi')
                     ->label('Kondisi Barang')
+                    ->options([
+                        'Baik' => 'Baik',
+                        'Rusak' => 'Rusak',
+                    ])
                     ->required()
-                    ->maxLength(50),
+                    ->native(false),
 
                 Forms\Components\FileUpload::make('gambar')
                     ->label('Foto Barang')
@@ -72,7 +86,7 @@ class BarangResource extends Resource
                 Tables\Columns\TextColumn::make('kode_barang')->label('Kode Barang')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('kategori')->label('Kategori')->sortable(),
                 Tables\Columns\TextColumn::make('jumlah')->label('Jumlah')->sortable(),
-                Tables\Columns\TextColumn::make('denahPenyimpanan.label')->label('Denah Penyimpanan')->sortable(),
+                Tables\Columns\TextColumn::make('denah.label')->label('Denah Penyimpanan')->sortable(),
                 Tables\Columns\TextColumn::make('kondisi')->label('Kondisi'),
                 Tables\Columns\ViewColumn::make('gambar')
                     ->label('Foto')

@@ -44,10 +44,15 @@ class PengembalianResource extends Resource
                         ->required(),
 
                     // Kondisi barang
-                    TextInput::make('kondisi')
+                    Select::make('kondisi')
                         ->label('Kondisi Pengembalian Barang')
-                        ->maxLength(50)
-                        ->required(),
+                        ->options([
+                            'Baik' => 'Baik',
+                            'Rusak' => 'Rusak',
+                            'Hilang' => 'Hilang',
+                        ])
+                        ->required()
+                        ->native(false),
                 ]),
             ]);
     }

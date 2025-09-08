@@ -31,24 +31,22 @@ class Barang extends Model
 
     private static function generateKode($id_denah)
     {
-        // Awalan kode berdasarkan lokasi penyimpanan
         $prefix = 'P' . $id_denah;
 
-        // Cari kode terakhir untuk lokasi ini
         $lastBarang = self::where('id_denah', $id_denah)
             ->orderBy('id', 'desc')
+            ->lockForUpdate() // tambah ini biar aman di transaksi
             ->first();
 
-        if ($lastBarang && preg_match('/(\d+)$/', $lastBarang->kode_barang, $matches)) {
-            $lastNumber = (int) $matches[1];
-        } else {
-            $lastNumber = 0;
-        }
+        $lastNumber = ($lastBarang && preg_match('/(\d+)$/', $lastBarang->kode_barang, $matches))
+            ? (int) $matches[1]
+            : 0;
 
         $newNumber = str_pad($lastNumber + 1, 5, '0', STR_PAD_LEFT);
 
         return $prefix . '-' . $newNumber;
     }
+
 
     // Relasi: Barang bisa dipinjam banyak kali
     public function peminjaman()
@@ -57,8 +55,8 @@ class Barang extends Model
     }
 
     // Relasi: Barang milik satu DenahPenyimpanan
-    public function denahPenyimpanan()
+    public function denah()
     {
-        return $this->belongsTo(DenahPenyimpanan::class, 'id_denah');
+        return $this->belongsTo(DenahPenyimpanan::class, 'id_denah', 'id');
     }
 }
