@@ -31,7 +31,13 @@ class Barang extends Model
 
     private static function generateKode($id_denah)
     {
-        $prefix = 'P' . $id_denah;
+        // Ambil kode denah dari relasi
+        $denah = DenahPenyimpanan::find($id_denah);
+        if (!$denah || !$denah->kode_denah) {
+            throw new \Exception("Kode denah tidak ditemukan untuk id_denah: {$id_denah}");
+        }
+
+        $prefix = $denah->kode_denah; // ganti prefix dari kode denah, bukan "P"
 
         $lastBarang = self::where('id_denah', $id_denah)
             ->orderBy('id', 'desc')
