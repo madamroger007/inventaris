@@ -27,7 +27,12 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - db_data:/var/lib/mysql
+      # simpan data MySQL di folder host (tidak hanya di volume docker)
+      - ./mysql_data:/var/lib/mysql
+      # file init.sql hanya jalan kalau database kosong
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d:ro
 
 volumes:
-  db_data:
+  # optional, biar tidak ada konflik volume lama
+  # db_data:
+    

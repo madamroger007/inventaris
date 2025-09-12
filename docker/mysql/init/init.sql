@@ -1,0 +1,4 @@
+CREATE DATABASE IF NOT EXISTS inventaris;
+CREATE USER IF NOT EXISTS 'laravel'@'%' IDENTIFIED BY 'secret';
+GRANT ALL PRIVILEGES ON inventaris.* TO 'laravel'@'%';
+FLUSH PRIVILEGES;
