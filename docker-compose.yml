@@ -31,8 +31,3 @@ services:
       - ./mysql_data:/var/lib/mysql
       # file init.sql hanya jalan kalau database kosong
       - ./docker/mysql/init:/docker-entrypoint-initdb.d:ro
-
-volumes:
-  # optional, biar tidak ada konflik volume lama
-  # db_data:
-    
