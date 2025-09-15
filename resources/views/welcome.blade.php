@@ -146,7 +146,7 @@
 
         <!-- Tombol WhatsApp Fixed -->
         <!-- Tombol WhatsApp Fixed -->
-        <a href="https://wa.me/6285163185067?text=Halo%20saya%20mau%20bertanya%20tentang%20layanan%20Anda"
+        <a href="https://wa.me/62882022661398?text=Halo%20saya%20mau%20bertanya%20tentang%20layanan%20Anda"
             target="_blank"
             class="relative bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg
    animate-bounce hover:scale-110 transition transform duration-300 ease-in-out">
